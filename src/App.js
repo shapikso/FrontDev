@@ -34,9 +34,9 @@ class App extends React.Component {
           {
             console.log('state ', this.state.taskText)
           }
-          { this.state.taskText.map(el => {
+          { this.state.taskText.map((el, index) => {
             console.log(el);
-            return <List taskText = {el} />
+            return <List taskText = {el} key = {index} />
           } )}
         </div>
     </div>
