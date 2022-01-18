@@ -1,44 +1,42 @@
 import React from 'react';
 import './App.css';
 import Form from './components/Form';
-import List from './components/List';
+import List from './components/List'
+
 
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {taskText: ['random Text']};
+  constructor(props) {
+    super(props);
+    this.state = {todos: [{value: 'random Text', id: 1, checked: false}]};
   }
 
-  componentDidMount() {
-    
+  addTolist = (task) => this.setState({ todos: [
+      ...this.state.todos,
+          {value: task, id: Date.now(), checked: false}
+      ]});
+
+  changeChecked = (id) => {
+      this.setState({ todos: this.state.todos.map(el => {
+              if (el.id === id) {
+                  return {...el, checked: !el.checked}
+              } else {
+                  return {...el}
+              }
+          }
+      )});
   }
 
-  componentWillUnmount() {
-    
-  }
-
-  list(task) {
-     this.setState({
-        taskText: [...this.state.taskText,task]
-     });
-     
-  }
+  delTodo = (id) => {
+        this.setState({ todos: this.state.todos.filter(el => el.id !== id)});
+    }
 
   render() {
     return (
       <div className="wrapper">
         <h1>Todo App</h1>
-        <Form list = {this.list.bind(this)} />
-        <div className="tasks">
-          {
-            console.log('state ', this.state.taskText)
-          }
-          { this.state.taskText.map((el, index) => {
-            console.log(el);
-            return <List taskText = {el} key = {index} />
-          } )}
-        </div>
+        <Form addTolist={this.addTolist} />
+        <List todos={this.state.todos} changeChecked = {this.changeChecked} delTodo={this.delTodo} />
     </div>
     );
   }

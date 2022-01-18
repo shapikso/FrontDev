@@ -3,32 +3,25 @@ import React from 'react';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {inputText: ' '};
+    this.state = {inputText: ''};
   }
 
   componentDidMount() {
     
   }
 
-  componentWillUnmount() {
-    
-  }
+  handleChangeInput = (e) => this.setState({ inputText: e.target.value});
 
-  inputText(e) {
-    this.setState({
-        inputText: e.target.value
-      });
-  }
-
-  subminButton() {
-      this.props.list(this.state.inputText)
+  handleSubmit = ()  => {
+      this.props.addTolist(this.state.inputText);
+      this.setState({inputText: ''})
   }
 
   render() {
     return (
         <div className="inputField">
-            <input onChange={this.inputText.bind(this)} id="inp" type="text" placeholder="Add your new todo"></input>
-            <button onClick={this.subminButton.bind(this)} className="add"> Add </button>
+            <input onChange={this.handleChangeInput} placeholder="Add your new todo" value={this.state.inputText}></input>
+            <button onClick={this.handleSubmit} className="add"> Add </button>
         </div>
     );
   }

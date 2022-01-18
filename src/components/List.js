@@ -1,30 +1,10 @@
 import React from 'react';
+import ListItem from './ListItem'
 
-
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    
-  }
-
-  componentWillUnmount() {
-    
-  }
-
-  render() {
-    return (
-        <div className='list'>
-        <p>{this.props.taskText}</p>
-        <div className="divBtn">
-            <button><i className="fas fa-trash"></i></button>
-            <button><i className="fas fa-check"></i></button>
-         </div>
-      </div>
-    );
-  }
-}
+const List = ({todos, deleteTodo, changeChecked, delTodo}) => (
+    <div className="tasks">
+        {todos.map((el, index) => <ListItem taskText={el.value} delTodo={delTodo} key = {el.id} id={el.id} checked = {el.checked} changeChecked = {changeChecked} />)}
+        </div>
+)
 
 export default List;
