@@ -10,12 +10,14 @@ body{
   background: linear-gradient(to bottom, #68Eacc 0%, #497BE8 100%);
 }
 .wrapper{
-  margin: 120px auto;
-  max-width: 600px;
-  width: 100%;
-  background: #fff;
-  border-radius: 5px;
-  padding: 25px;
+    margin: 120px auto;
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column
 }
 .inputField input {
   outline: none;
