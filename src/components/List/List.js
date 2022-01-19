@@ -1,15 +1,15 @@
 import React from 'react';
-import ListItem from './ListItem'
+import ListItem from './ListItem';
 
-const List = ({todos, deleteTodo, changeChecked, delTodo}) => (
+const List = ({todos, deleteTodo, changeChecked}) => (
     <div className="tasks">
-        {todos.map((el, index) => <ListItem
+        {todos.map((el) => <ListItem
             {...el}
-            deleteTodo={delTodo}
+            deleteTodo={deleteTodo}
             key = {el.id}
             changeChecked = {changeChecked}
         />)}
     </div>
-)
+);
 
 export default List;

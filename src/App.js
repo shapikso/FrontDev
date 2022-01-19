@@ -1,37 +1,42 @@
 import React from 'react';
 import './App.css';
 import Form from './components/Form/Form';
-import List from './components/List/List'
+import List from './components/List/List';
 import axios from "axios";
 import Loader from "./components/Loader/Loader";
-import {URL} from "./constants/constans";
+import {URL} from "./constants/api";
+import Nodata from "./components/Nodata/Nodata";
 
 class App extends React.Component {
-  constructor(props) {
-      super(props);
-      this.state = {todos: []};
-  }
-
-  setToDoes = (data) => {
-      this.setState({
-          todos: data
-      });
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: [],
+            isLoading: true
+        };
+    }
+    
+    componentDidMount() {
+        this.getToDoData();
+    }
 
   getToDoData = async() => {
       try {
-          const res = await axios.get(URL);
-          const data = res.data;
-          this.setToDoes(data);
-      } catch (error) {
-          console.log(error);
+          const {data} = await axios.get(URL);
+          this.setState({
+              todos: data,
+              isLoading: false
+          });
+      } catch (e) {
+          console.log('log error', e);
+          this.setState({isLoading: false});
       }
   }
 
-  addTolist = (task) => this.setState({ todos: [
+  addToList = (task) => this.setState({ todos: [
       ...this.state.todos,
-          {title: task, id: Date.now(), completed: false}
-      ]});
+      {title: task, id: Date.now(), completed: false}
+  ]});
 
   changeChecked = (id) => {
       this.setState({
@@ -40,21 +45,22 @@ class App extends React.Component {
   }
 
   deleteTodo = (id) => this.setState({ todos: this.state.todos.filter(el => el.id !== id)});
-
-  componentDidMount() {
-      this.getToDoData();
-  }
+  
   render() {
-    return (
-    <div className="wrapper">
-        <h1>Todo App</h1>
-        <Form addTolist={this.addTolist} />
-        {!!this.state.todos.length
-            ?  <List todos={this.state.todos} changeChecked = {this.changeChecked} delTodo={this.deleteTodo} />
-            :  <Loader/>
-        }
-    </div>
-    );
+      return (
+          <div className="wrapper">
+              <h1>Todo App</h1>
+              <Form addToList={this.addToList} />
+              { this.state.isLoading
+                  ? <Loader/> 
+                  : this.state.todos.length
+                      ?  <List todos={this.state.todos}
+                          changeChecked = {this.changeChecked}
+                          deleteTodo={this.deleteTodo} />
+                      :  <Nodata/>
+              }
+          </div>
+      );
   }
 }
 

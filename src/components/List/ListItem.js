@@ -5,13 +5,13 @@ const ListItem = ({title, completed, changeChecked, id, deleteTodo}) => {
     const changeTask = () => changeChecked(id);
 
     return(
-    <div className={completed ? 'list done' : 'list'}>
-        <p>{title}</p>
-        <div className="divBtn">
-            <button onClick={ deleteTask }><i className="fas fa-trash"></i></button>
-            <button onClick={ changeTask }><i className="fas fa-check"></i></button>
+        <div className={completed ? 'list done' : 'list'}>
+            <p>{title}</p>
+            <div className="divBtn">
+                <button onClick={ deleteTask }><i className="fas fa-trash"></i></button>
+                <button onClick={ changeTask }><i className="fas fa-check"></i></button>
+            </div>
         </div>
-    </div>
-);}
+    );};
 
 export default ListItem;
