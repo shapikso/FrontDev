@@ -6,7 +6,6 @@ import {traks} from "./constants/tracks";
 class App extends Component {
 
     constructor (props) {
-
         super(props);
         this.state = {
             "currentSongIndex": 0
