@@ -1,29 +1,35 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, {Component} from "react";
+import "./App.css";
 import Traks from "./components/Traks/trak";
-import {traks} from "./constants/constant";
+import {traks} from "./constants/tracks";
 
 class App extends Component {
 
-    constructor(props) {
+    constructor (props) {
+
         super(props);
         this.state = {
-            currentSongIndex: 0,
-            traks
+            "currentSongIndex": 0
         };
+
     }
 
-    setCurrentSongIndex = (trackId) => this.setState({ currentSongIndex: trackId });
+    setCurrentSongIndex = (trackId) => this.setState({"currentSongIndex": trackId});
 
-    render() {
+    render () {
+
         return (
-            <div className = "warapper">
-                <Traks traks={this.state.traks}  currentSongIndex={ this.state.currentSongIndex }
-                       setCurrentSongIndex={this.setCurrentSongIndex}
+            <div className="warapper">
+                <Traks
+                    currentSongIndex={this.state.currentSongIndex}
+                    setCurrentSongIndex={this.setCurrentSongIndex}
+                    traks={traks}
                 />
             </div>
         );
+
     }
+
 }
 
 export default App;
