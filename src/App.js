@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
+import {stalkerDate} from "./constans/date";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
     date: new Date().getTime(),
-    stalkerDate : new Date("Dec 8, 2022 00:00:01").getTime(),
     numberOfDays: '',
     numberOfHours: '',
     numberOfSeconds: '',
@@ -28,7 +28,7 @@ class App extends React.Component {
   tick() {
     this.setState({
       date: new Date().getTime(),
-      timeLeft:   this.state.stalkerDate - this.state.date,
+      timeLeft:   stalkerDate - this.state.date,
       numberOfDays: Math.floor(this.state.timeLeft / (1000 * 60 * 60 * 24)).toString(),
       numberOfHours: Math.floor((this.state.timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString(),
       numberOfMinutes: Math.floor((this.state.timeLeft % (1000 * 60 * 60)) / (1000 * 60)).toString(),
