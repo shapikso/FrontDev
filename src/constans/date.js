@@ -1,0 +1,1 @@
+export const stalkerDate = new Date("Dec 8, 2022 00:00:01").getTime()

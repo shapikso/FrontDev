@@ -1,33 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
+import {stalkerDate} from "./constans/date";
 
-function App() {
-  return (
-    <div class="app">
-      
-      <div class="song-info">
-        <img
-        class="albumImg"
-          src="https://chillhop.com/wp-content/uploads/2020/09/0255e8b8c74c90d4a27c594b3452b2daafae608d-1024x1024.jpg"
-          alt=""
-        />
-        <div>
-          <h2 class="name">Quran</h2>
-          <h3 class="song">Hakim Omari</h3>
-        </div>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+    date: new Date().getTime(),
+    numberOfDays: '',
+    numberOfHours: '',
+    numberOfSeconds: '',
+    timeLeft: 0,
+  };
+  }
+  
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date().getTime(),
+      timeLeft:   stalkerDate - this.state.date,
+      numberOfDays: Math.floor(this.state.timeLeft / (1000 * 60 * 60 * 24)).toString(),
+      numberOfHours: Math.floor((this.state.timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString(),
+      numberOfMinutes: Math.floor((this.state.timeLeft % (1000 * 60 * 60)) / (1000 * 60)).toString(),
+      numberOfSeconds: Math.floor((this.state.timeLeft % (1000 * 60)) / 1000).toString()
+    });
+  }
+
+  render() {
+    return (
+      <div className='timer'>
+        <h1>До выхода Сталкера еще</h1>
+        <h1>{this.state.numberOfDays} Дня {this.state.numberOfHours} Часа {this.state.numberOfMinutes} Минуты {this.state.numberOfSeconds} секунды.</h1>
       </div>
-      <div class="player-control">
-        
-        
-        <i class="fas fa-play" id="play-pause"><FontAwesomeIcon icon={faPlay} /></i>
-        <i class="fas fa-forward" id="forward"></i>
-
-      </div>
-
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
