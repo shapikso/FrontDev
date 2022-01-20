@@ -1,8 +1,7 @@
 import React from "react";
 
-function Information ({currentSongIndex, traks}) {
-
-    return <div className="song-info">
+const Information = ({currentSongIndex, traks}) => (
+    <div className="song-info">
         <img
             className="albumImg"
             src = {traks[currentSongIndex].images}
@@ -12,9 +11,8 @@ function Information ({currentSongIndex, traks}) {
             <h2 className="name">{traks[currentSongIndex].title}</h2>
             <h3 className="song">{traks[currentSongIndex].subtitle}</h3>
         </div>
-    </div>;
+    </div>);
 
-}
 
 
 export default Information;
