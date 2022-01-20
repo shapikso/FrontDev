@@ -1,8 +1,5 @@
 import React from 'react';
 
-const Nodata = () => (
-    <div>
-       Something gone wrong :=(
-    </div>);
+const Nodata = () => (<div>No data</div>);
 
 export default Nodata;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListItem = ({title, completed, changeChecked, id, deleteTodo}) => {
     const deleteTask = () => deleteTodo(id);
-    const changeTask = () => changeChecked(id);
+    const changeTask = () => changeChecked(id, completed);
 
     return(
         <div className={completed ? 'list done' : 'list'}>
