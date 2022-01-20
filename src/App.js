@@ -1,33 +1,123 @@
-import logo from './logo.svg';
-import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import React, {Component} from 'react';
+import './App.scss';
 
-function App() {
-  return (
-    <div class="app">
-      
-      <div class="song-info">
-        <img
-        class="albumImg"
-          src="https://chillhop.com/wp-content/uploads/2020/09/0255e8b8c74c90d4a27c594b3452b2daafae608d-1024x1024.jpg"
-          alt=""
-        />
-        <div>
-          <h2 class="name">Quran</h2>
-          <h3 class="song">Hakim Omari</h3>
-        </div>
-      </div>
-      <div class="player-control">
-        
-        
-        <i class="fas fa-play" id="play-pause"><FontAwesomeIcon icon={faPlay} /></i>
-        <i class="fas fa-forward" id="forward"></i>
+class App extends Component {
+    render() {
+        return (
+            <div className="table">
+                <div className="table-row-first">
+                    <div className="table-row-two">
+                        <div className="table-row-item">
+                            name
+                        </div>
+                        <div className="table-row-item">
+                            username
+                        </div>
+                        <div className="table-row-item">
+                            email
+                        </div>
+                        <div className="table-row-item">
+                            city
+                        </div>
+                        <div className="table-row-item">
+                            website
+                        </div>
+                        <div className="table-row-item">
+                            company
+                        </div>
+                    </div>
 
-      </div>
+                </div>
+                <div className="table-row">
+                    <div className="table-row-one">
+                        <div className="table-row-one-item">
+                            name
+                        </div>
+                        <div className="table-row-one-item">
+                            username
+                        </div>
+                        <div className="table-row-one-item">
+                            email
+                        </div>
+                        <div className="table-row-one-item">
+                            city
+                        </div>
+                        <div className="table-row-one-item">
+                            website
+                        </div>
+                        <div className="table-row-one-item">
+                            company
+                        </div>
+                    </div>
+                    <div className="table-row-two">
+                        <div className="table-row-two-item">
+                            Bla Bla Bla
+                        </div>
 
-    </div>
-  );
+                        <div className="table-row-two-item">
+                            Bla Bla Bla
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla
+                        </div>
+                    </div>
+                </div>
+                <div className="table-row">
+                    <div className="table-row-one">
+                        <div className="table-row-one-item">
+                            name
+                        </div>
+                        <div className="table-row-one-item">
+                            username
+                        </div>
+                        <div className="table-row-one-item">
+                            email
+                        </div>
+                        <div className="table-row-one-item">
+                            city
+                        </div>
+                        <div className="table-row-one-item">
+                            website
+                        </div>
+                        <div className="table-row-one-item">
+                            company
+                        </div>
+                    </div>
+                    <div className="table-row-two">
+                        <div className="table-row-two-item">
+                            Bla Bla Bla2
+                        </div>
+
+                        <div className="table-row-two-item">
+                            Bla Bla Bla2
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla2
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla2
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla2
+                        </div>
+                        <div className="table-row-two-item">
+                            Bla Bla Bla2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
+
