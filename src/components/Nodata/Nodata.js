@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Nodata = () => (<div>No data</div>);
+const NoData = () => (<div>No data</div>);
 
-export default Nodata;
+export default NoData;
