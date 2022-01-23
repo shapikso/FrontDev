@@ -15,7 +15,7 @@
     padding: 50px;
     width: 100%;
   }
-  &-row-first {
+  &-row-head {
     @media screen and (max-width: 1200px) {
       display: none;
     }
@@ -51,6 +51,9 @@
         grid-template-rows: repeat(6, 1fr);
       }
       &-item {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding: 5px;
         text-align: center;
         border: 1px solid #000000;
       }
