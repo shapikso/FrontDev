@@ -1,13 +1,13 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-const List = ({todos, deleteTodo, changeChecked}) => (
-    <div className="tasks">
-        {todos.map((el) => <ListItem
-            {...el}
-            deleteTodo={deleteTodo}
+const List = ({galery, showBigImg}) => (
+    <div className="galery">
+        {galery.map((el) => <ListItem
+            image = {el.thumbnailUrl}
+            bigImage ={el.url}
             key = {el.id}
-            changeChecked = {changeChecked}
+            showBigImg={showBigImg}
         />)}
     </div>
 );
