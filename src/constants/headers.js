@@ -1,8 +1,8 @@
 export const header = [
-    'name',
-    'username',
-    'email',
-    'city',
-    'website',
-    'company'
+    'Name',
+    'Username',
+    'Email',
+    'City',
+    'Website',
+    'Company'
 ]
