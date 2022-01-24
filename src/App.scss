@@ -5,57 +5,62 @@
           box-sizing: border-box;
 }
 
+@mixin gridCell {
+  width: 50%;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+%cell {
+  text-align: center;
+  border: 1px solid #000000;
+}
+
 .table {
   width: 1200px;
   margin: 120px auto;
-
-  @media screen and (max-width: 1200px) {
-    display: grid;
-    grid-gap: 70px;
-    padding: 50px;
-    width: 100%;
-  }
-  &-row-head {
-    @media screen and (max-width: 1200px) {
-      display: none;
-    }
-  }
   &-row {
-    @media screen and (max-width: 1200px) {
-      display: flex;
-    }
     &-item {
-      text-align: center;
-      border: 1px solid #000000;
+      @extend %cell;
     }
     &-one{
       display: none;
-      @media screen and (max-width: 1200px) {
-        display: grid;
-        width: 50%;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-      }
       &-item {
-        text-align: center;
-        border: 1px solid #000000;
+        @extend %cell;
       }
     }
     &-two{
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      @media screen and (max-width: 1200px) {
-        background-color: aqua;
-        width: 50%;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-      }
       &-item {
         text-overflow: ellipsis;
         overflow: hidden;
         padding: 5px;
-        text-align: center;
-        border: 1px solid #000000;
+        @extend %cell;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .table {
+    display: grid;
+    grid-gap: 70px;
+    padding: 50px;
+    width: 100%;
+
+    &-row-head {
+      display: none;
+    }
+
+    &-row {
+      display: flex;
+      &-one {
+        display: grid;
+        @include gridCell;
+      }
+      &-two {
+        background-color: aqua;
+        @include gridCell;
       }
     }
   }
