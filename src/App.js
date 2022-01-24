@@ -1,19 +1,19 @@
 import React from 'react';
 import './App.css';
-// import Form from './components/Form/Form';
 import List from './components/List/List';
 import Pagination from './components/Pagination/Pagination';
 import BigImg from './components/BigImg/BigImg';
 import axios from "axios";
 // import Loader from "./components/Loader/Loader";
 // import NoData from "./components/Nodata/Nodata";
-//import {URL} from "./constants/api";
+
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            images: [],
+            allImages: [],
+            images:[],
             isLoading: true,
             activePage: 1,
             bigImg: '',
@@ -21,36 +21,29 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.getGalleryData((this.state.activePage-1)*20,this.state.activePage*20);
+        //this.getGalleryData((this.state.activePage-1)*20,this.state.activePage*20);
+        this.getGalleryData();
     }
 
-    getGalleryData = async(leftLimit, rigthLimit) => {
+    getGalleryData = async() => {
         try{
             const {data} = await axios.get('https://jsonplaceholder.typicode.com/photos');
-            this.setState({images : data.slice(leftLimit,rigthLimit)}) ;
+            this.setState({
+                allImages : data,
+                images: data.slice(0,20)
+            }) ;
         } catch (error){
             return false;
         }
     }
+
     setActivePage = (page) => {
         this.setState({activePage: page});
-        this.getGalleryData((page-1)*20,page*20);
+        this.setState({images: this.state.allImages.slice((page-1)*20,page*20)});
     }
-    // changeChecked = async (id, status) => {
-    //     try {
-    //         await axios.put(URL.baseUrl+`/${id}`, {
-    //             completed: !status
-    //         });
-    //     } finally {
-    //         this.setState({
-    //             todos: this.state.todos.map(el => el.id === id ? {...el, completed: !el.completed} : el)
-    //         });
-    //     }
-    // }
+
     showBigImg = (img) => this.setState({bigImg: img})
     hiddeBigImg = () => this.setState({bigImg: ''})
-
-
 
     render() {
         return (
