@@ -1,33 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import React, {Component} from 'react';
+import axios from "axios";
+import './App.scss';
+import Header from './components/Header/Header'
+import Row from './components/Row/Row'
+import { normoliseUser } from './helpers/helper'
 
-function App() {
-  return (
-    <div class="app">
-      
-      <div class="song-info">
-        <img
-        class="albumImg"
-          src="https://chillhop.com/wp-content/uploads/2020/09/0255e8b8c74c90d4a27c594b3452b2daafae608d-1024x1024.jpg"
-          alt=""
-        />
-        <div>
-          <h2 class="name">Quran</h2>
-          <h3 class="song">Hakim Omari</h3>
-        </div>
-      </div>
-      <div class="player-control">
-        
-        
-        <i class="fas fa-play" id="play-pause"><FontAwesomeIcon icon={faPlay} /></i>
-        <i class="fas fa-forward" id="forward"></i>
 
-      </div>
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
+            isLoading: true};
+    }
 
-    </div>
-  );
+    componentDidMount() {
+        this.getUserData();
+    }
+
+    getUserData = async() => {
+        try {
+            const {data} = await axios.get('https://jsonplaceholder.typicode.com/users');
+            this.setState({
+                users: normoliseUser(data),
+                isLoading:false});
+        } catch (error) {
+            this.setState({ isLoading: false });
+        }
+    }
+    render() {
+        return (
+            <div className="table">
+                <div className="table-row-head">
+                    <Header tableRowClass="table-row-two" itemClass="table-row-item" />
+                </div>
+                {
+                    this.state.users.map((el, index) => <Row user={el} key={index} />)
+                }
+            </div>
+        );
+    }
 }
 
 export default App;
+
