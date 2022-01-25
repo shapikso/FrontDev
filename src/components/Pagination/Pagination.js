@@ -1,16 +1,16 @@
 import React from 'react';
+import {pagination} from '../../constants/ui';
+import PaginationItem from './PaginationItem';
 
-const Pagination = ({activePage, setActivePage}) => {
-    const onclicHandler = (e) => setActivePage(+e.target.innerHTML);
-    return (
-        <ul className="pages">
-            <li onClick={onclicHandler} className={activePage === 1 ? "pointer activepage" : "pointer"} >1</li>
-            <li onClick={onclicHandler} className={activePage === 2 ? "pointer activepage" : "pointer"} >2</li>
-            <li onClick={onclicHandler} className={activePage === 3 ? "pointer activepage" : "pointer"} >3</li>
-            <li onClick={onclicHandler} className={activePage === 4 ? "pointer activepage" : "pointer"} >4</li>
-            <li onClick={onclicHandler} className={activePage === 5 ? "pointer activepage" : "pointer"} >5</li>
-        </ul>
-    );
-};
+const Pagination = ({activePage, setActivePage}) => (
+    <ul className="pages">
+        { pagination.map(el => <PaginationItem
+            activePage={activePage}
+            setActivePage={setActivePage}
+            key={el}
+            number={el}
+        />) }
+    </ul>
+);
 
 export default Pagination;

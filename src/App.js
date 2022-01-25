@@ -5,6 +5,7 @@ import Pagination from './components/Pagination/Pagination';
 import BigImg from './components/BigImg/BigImg';
 import axios from "axios";
 import Loader from "./components/Loader/Loader";
+import {PER_PAGE} from "./constants/ui";
 // import NoData from "./components/Nodata/Nodata";
 
 
@@ -29,28 +30,32 @@ class App extends React.Component {
             const {data} = await axios.get('https://jsonplaceholder.typicode.com/photos');
             this.setState({
                 allImages : data,
-                images: data.slice(0,20),
+                images: data.slice(0,PER_PAGE),
                 isLoading: false
             }) ;
-        } catch (error){
-            return false;
+        } catch {
+            this.setState({
+                isLoading: false
+            });
         }
     }
 
     setActivePage = (page) => {
-        this.setState({activePage: page});
-        this.setState({images: this.state.allImages.slice((page-1)*20,page*20)});
+        this.setState({images: this.state.allImages.slice((page-1)*PER_PAGE,page*PER_PAGE), activePage: page});
     }
 
-    showBigImg = (img) => this.setState({bigImg: img})
+    showBigImg = (img = '') => this.setState({bigImg: img})
     hiddeBigImg = () => this.setState({bigImg: ''})
 
     render() {
         return (
             <div className="form">
                 {this.state.bigImg && <BigImg bigImg={this.state.bigImg} hiddeBigImg={this.hiddeBigImg} />}
-                {this.state.isLoading ? <Loader/> : <List galery={this.state.images} showBigImg={this.showBigImg} />}
-                <Pagination setActivePage={this.setActivePage} activePage={this.state.activePage}/>
+                {this.state.isLoading ? <Loader/> : <>
+                    <List galery={this.state.images} showBigImg={this.showBigImg} />
+                    <Pagination setActivePage={this.setActivePage} activePage={this.state.activePage}/>
+                </>
+                }
 
             </div>
         );
