@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from "../commons/Button";
+import './form.css';
 
 class Form extends React.Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class Form extends React.Component {
   render() {
     return (
         <div className="inputField">
-            <input ref={this.myRef} onChange={this.handleChangeInput} placeholder="Add your new todo" value={this.state.inputText}/>
-            <Button onClickHandler={this.handleSubmit} title='set'/>
+            <input ref={this.myRef} onChange={this.handleChangeInput} placeholder="Set time" value={this.state.inputText}/>
+            <Button disabled={!this.state.inputText.trim()} onClickHandler={this.handleSubmit} title='set'/>
         </div>
     );
   }

@@ -1,0 +1,10 @@
+.timer {
+    font-size: 120px;
+    background: linear-gradient(to bottom, #68Eacc 0%, #497BE8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.timer-wrapper {
+    text-align: center;
+}

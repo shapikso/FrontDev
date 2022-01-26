@@ -18,25 +18,25 @@ body{
   padding: 25px;
 }
 .inputField input {
-  outline: none;
-  width: 85%;
-  height: 100%;
-  border: 1px solid #ccc;
-  font-size: 17px;
-  border-radius: 10px;
-  padding-left: 15px;
-  margin: 20px 0 20px 0;
+    outline: none;
+    height: 60px;
+    width: 196px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 15px;
+    margin: 20px 0 20px 0;
+    font-size: 30px;
 }
  button {
- width: 60px;
- height: 100%;
- border: none;
- background: #8e49e8;
- color: #fff;
- font-size: 17px;
- cursor: pointer;
- border-radius: 10px;
- margin-left: 10px;
+     width: 96px;
+     height: 60px;
+     border: none;
+     background: #8e49e8;
+     color: #fff;
+     font-size: 30px;
+     cursor: pointer;
+     border-radius: 10px;
+     margin-left: 10px;
 }
 .inputField button:disabled,
 button[disabled]{
