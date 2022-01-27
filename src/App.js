@@ -34,7 +34,11 @@ class App extends React.Component {
         <Header title="timer React"/>
         <Form setTime={this.setTime} />
         <Timer time={this.state.timeLeft}/>
-        <Controls disableReset={!this.state.timeLeft ? true : undefined} disabled={this.state.isTicking} startTimer={this.startTimer} stopTimer={this.stopTimer} resetTime={this.resetTime}/>
+        <Controls disableReset={!this.state.timeLeft}
+                  disabled={this.state.isTicking}
+                  startTimer={this.startTimer}
+                  stopTimer={this.stopTimer}
+                  resetTime={this.resetTime}/>
     </div>
     );
   }
