@@ -7,7 +7,8 @@ class Traks extends Component {
         super(props);
         this.audioEl = React.createRef();
         this.state = {
-            isPlaying: false
+            isPlaying: false,
+            animationClass: false
         };
     }
     playOrStop = () => this.state.isPlaying ? this.audioEl.current.play() : this.audioEl.current.pause();
@@ -17,6 +18,7 @@ class Traks extends Component {
     );
     componentDidUpdate () {
         this.playOrStop();
+
     }
     skipSong = (forwards = true) => {
         const {setCurrentSongIndex, currentSongIndex, traks} = this.props;
@@ -24,18 +26,24 @@ class Traks extends Component {
             currentSongIndex + 1 > traks.length - 1
                 ? setCurrentSongIndex(0)
                 : setCurrentSongIndex(currentSongIndex + 1);
+            this.setState({animationClass: true});
         } else {
             currentSongIndex - 1 < 0
                 ? setCurrentSongIndex(traks.length - 1)
                 : setCurrentSongIndex(currentSongIndex - 1);
+            this.setState({animationClass: true});
         }
+        setTimeout(()=>{
+            this.setState({animationClass: false});
+        },1000);
+
     }
     handleBackButton = () => this.skipSong(false)
 
     render () {
         return (
             <div className="app">
-                <Information {...this.props} />
+                <Information {...this.props} animateClass={this.state.animationClass} />
                 <audio
                     ref={this.audioEl}
                     src={this.props.traks[this.props.currentSongIndex].uri}
