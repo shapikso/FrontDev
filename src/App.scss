@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,body{
+  display: grid;
+  height: 100%;
+  place-items: center;
+  background: #0069d9;
+  font-family: 'Lato', sans-serif;
+}
+
+canvas {
+  border: 1px solid #95d1fd;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.paint {
+  display: flex;
+  gap: 30px;
+  margin: 200px auto;
+}
