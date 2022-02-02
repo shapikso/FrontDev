@@ -1,31 +1,38 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import {StFormWrapper} from "./styled";
+import {StButton, StInput} from "../commonStyles/commonStyles";
 
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.myRef = React.createRef();
-    this.state = {inputText: ''};
+const Form = ({addToList}) => {
+
+  const inputRef = useRef();
+  const [inputText, setInputText] = useState('');
+
+  useEffect(()=>{
+    inputRef.current.focus();
+  },[])
+
+  const handleChangeInput = (e) => setInputText(e.target.value);
+
+  const handleSubmit = ()  => {
+      addToList(inputText);
+      setInputText('');
+      inputRef.current.focus();
   }
 
-  componentDidMount() {
-    this.myRef.current.focus();
-  }
-
-  handleChangeInput = (e) => this.setState({ inputText: e.target.value});
-
-  handleSubmit = ()  => {
-      this.props.addTolist(this.state.inputText);
-      this.setState({inputText: ''})
-  }
-
-  render() {
-    return (
-        <div className="inputField">
-            <input ref={this.myRef} onChange={this.handleChangeInput} placeholder="Add your new todo" value={this.state.inputText}></input>
-            <button disabled={!this.state.inputText.trim()} onClick={this.handleSubmit} className="add"> Add </button>
-        </div>
+  return (
+        <StFormWrapper>
+            <StInput
+                ref={inputRef}
+                onChange={handleChangeInput}
+                placeholder="Add your new todo" value={inputText}/>
+            <StButton fontSize="20px"
+                      disabled={!inputText.trim()}
+                      isDisabled={!inputText.trim()}
+                      onClick={handleSubmit}>
+                        Add
+            </StButton>
+        </StFormWrapper>
     );
-  }
 }
 
 export default Form;

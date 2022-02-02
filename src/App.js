@@ -1,36 +1,26 @@
-import React from 'react';
-import './App.css';
+import React, {useState} from 'react';
 import Form from './components/Form/Form';
 import List from './components/List/List'
+import {StWrapper} from "./styles";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {todos: [{value: 'random Text', id: 1, checked: false}]};
-  }
+const App = () => {
 
-  addTolist = (task) => this.setState({ todos: [
-      ...this.state.todos,
-          {value: task, id: Date.now(), checked: false}
-      ]});
+  const [todos, setTodos] = useState([{value: 'random Text', id: 1, checked: false}])
 
-  changeChecked = (id) => {
-      this.setState({
-          todos: this.state.todos.map(el => el.id === id ? {...el, checked: !el.checked} : el)
-      });
-  }
+  const addToList = (task) => setTodos( [...todos, {value: task, id: Date.now(), checked: false}]);
 
-  deleteTodo = (id) => this.setState({ todos: this.state.todos.filter(el => el.id !== id)});
+  const changeChecked = (id) => setTodos( todos.map(el => el.id === id ? {...el, checked: !el.checked} : el));
 
-  render() {
+
+    const deleteTodo = (id) => setTodos( todos.filter(el => el.id !== id));
+
     return (
-      <div className="wrapper">
+      <StWrapper>
         <h1>Todo App</h1>
-        <Form addTolist={this.addTolist} />
-        <List todos={this.state.todos} changeChecked = {this.changeChecked} delTodo={this.deleteTodo} />
-    </div>
+        <Form addToList={addToList} />
+        <List todos={todos} changeChecked = {changeChecked} deleteTodo={deleteTodo} />
+    </StWrapper>
     );
-  }
 }
 
 export default App;

@@ -1,17 +1,19 @@
 import React from 'react';
+import {ButtonWrapper, StList} from "./styled";
+import {StButton} from "../commonStyles/commonStyles";
 
 const ListItem = ({value, checked, changeChecked, id, deleteTodo}) => {
     const deleteTask = () => deleteTodo(id);
     const changeTask = () => changeChecked(id);
 
     return(
-    <div className={checked ? 'list done' : 'list'}>
+    <StList done={checked}>
         <p>{value}</p>
-        <div className="divBtn">
-            <button onClick={ deleteTask }><i className="fas fa-trash"></i></button>
-            <button onClick={ changeTask }><i className="fas fa-check"></i></button>
-        </div>
-    </div>
+        <ButtonWrapper>
+            <StButton width="40px" onClick={ deleteTask }><i className="fas fa-trash"></i></StButton>
+            <StButton width="40px" onClick={ changeTask }><i className="fas fa-check"></i></StButton>
+        </ButtonWrapper>
+    </StList>
 );}
 
 export default ListItem;
