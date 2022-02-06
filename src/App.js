@@ -1,83 +1,76 @@
+import { useRef, useEffect } from "react";
+import React from "react";
 import './App.scss';
-import React, {Component} from 'react';
-import SideBar from './components/SideBar/SideBar';
 
-class App extends Component {
-    frameCount = 0;
-    animationFrameID;
+const App = () => {
+    const canvasRef = useRef(null);
+    const requestIdRef = useRef(null);
+    const ballRef = useRef([
+        { x: 50, y: 50, vx: 4, vy: 4, radius: 10, color: "#444"},
+        { x: 150, y: 150, vx: -4, vy: 4, radius: 5, color: "#1ec5c5"},
+        { x: 500, y: 500, vx: 4, vy: -4, radius: 20, color: "#40bd18"}
+    ]);
+    const size = { width: 800, height: 600 };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            x: 0,
-            y: 0,
-            dx: 0,
-            dy: 0,
-            isPainting: false,
-            lineWidth: 8,
-            color: '#f44336'
-        };
-        this.canvasRef = React.createRef();
-    }
 
-    componentDidMount() {
-        this.ctx = this.canvasRef.current.getContext('2d');
-        this.rect = this.canvasRef.current.getBoundingClientRect();
-    }
+    const drawCircle = (ctx, size, ball) => {
+        const {x, y, radius, color} = ball;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
 
-    componentDidUpdate() {
-        this.ctx = this.canvasRef.current.getContext('2d');
-        this.loop();
-    }
+    };
 
-    componentWillUnmount() {
-        window.cancelAnimationFrame(this.animationFrameID);
-    }
 
-    loop = () => {
-        this.animationFrameID = window.requestAnimationFrame(this.loop);
-        if(this.state.isPainting) {
-            this.drawWithMoveRect();
+    const updateBall = (ball) => {
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        if (ball.x + ball.radius >= size.width) {
+            ball.vx = -ball.vx;
+            ball.x = size.width - ball.radius;
         }
-    }
+        if (ball.x - ball.radius <= 0) {
+            ball.vx = -ball.vx;
+            ball.x = ball.radius;
+        }
+        if (ball.y + ball.radius >= size.height) {
+            ball.vy = -ball.vy;
+            ball.y = size.height - ball.radius;
+        }
+        if (ball.y - ball.radius <= 0) {
+            ball.vy = -ball.vy;
+            ball.y = ball.radius;
+        }
+    };
 
-    drawWithMoveRect = () => {
-        this.ctx.strokeStyle = this.state.color;
-        this.ctx.lineCap = "round";
-        this.ctx.lineWidth = this.state.lineWidth;
-        this.ctx.beginPath();
-        this.ctx.moveTo(this.state.x, this.state.y);
-        this.ctx.lineTo(this.state.x - this.state.dx, this.state.y - this.state.dy);
-        this.ctx.stroke();
-        this.ctx.closePath();
-    }
-    togglePainting = () =>this.setState({isPainting: !this.state.isPainting});
+    const renderFrame = () => {
+        const ctx = canvasRef.current.getContext("2d");
+        ctx.clearRect(0, 0, size.width, size.height);
+        ballRef.current.forEach((ballElement => {
+            updateBall(ballElement);
+            drawCircle(ctx, size, ballElement);
+        }));
 
-    setColor = (color) => this.setState({color: color.hex});
+    };
 
+    const tick = () => {
+        if (!canvasRef.current) return;
+        renderFrame();
+        requestIdRef.current = requestAnimationFrame(tick);
+    };
 
-    handleMouseMove = (e) => {
-        this.setState({x: e.clientX - this.rect.x, dx: e.movementX, y: e.clientY - this.rect.y, dy: e.movementY});
-    }
+    useEffect(() => {
+        requestIdRef.current = requestAnimationFrame(tick);
+        return () => {
+            cancelAnimationFrame(requestIdRef.current);
+        };
+    }, []);
 
-    changeRangeHandler = (value) => this.setState({lineWidth: value});
-
-    
-    render() {
-        return (
-            <div className="paint">
-                <canvas
-                    ref={this.canvasRef}
-                    width="800px"
-                    height="600px"
-                    onMouseMove={this.handleMouseMove}
-                    onMouseDown={this.togglePainting}
-                    onMouseUp={this.togglePainting}
-                />
-                <SideBar color={this.state.color} setColor={this.setColor} changeRangeHandler={this.changeRangeHandler} />
-            </div>
-        );
-    }
-}
+    return <canvas {...size} ref={canvasRef} />;
+};
 
 export default App;
