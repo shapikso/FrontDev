@@ -1,12 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useContext} from 'react';
 import {StFormWrapper} from "./styled";
 import {StButton, StInput} from "../commonStyles/commonStyles";
+import {UserContext} from "../../themeContext";
 
-const Form = ({addToList}) => {
+const Form = () => {
 
   const inputRef = useRef();
   const [inputText, setInputText] = useState('');
-
+  const name = useContext(UserContext);
   useEffect(()=>{
     inputRef.current.focus();
   },[])
@@ -14,7 +15,7 @@ const Form = ({addToList}) => {
   const handleChangeInput = (e) => setInputText(e.target.value);
 
   const handleSubmit = ()  => {
-      addToList(inputText);
+      name.changeName(inputText);
       setInputText('');
       inputRef.current.focus();
   }

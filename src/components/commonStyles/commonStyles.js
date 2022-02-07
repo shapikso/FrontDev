@@ -2,8 +2,8 @@ import styled from "styled-components";
 import {COLOR} from "../../constants/colors";
 
 export const StButton = styled.button`
-  width: ${({width}) => width ? width : '60px' };
-  height: 100%;
+  width: ${({width}) => width ? width : '85px' };
+  height: 40px;
   border: none;
   background: ${COLOR.buttonBackGround};
   color: ${COLOR.whiteColor};
@@ -20,10 +20,13 @@ export const StButton = styled.button`
 export const StInput = styled.input`
   outline: none;
   width: 85%;
-  height: 100%;
   border: 1px solid ${COLOR.inputBorder};
   font-size: 17px;
   border-radius: 10px;
-  padding-left: 15px;
   margin: 20px 0 20px 0;
+  height: 40px;
+  padding: 15px;
+  :focus {
+    border-color: ${COLOR.focusInput};
+  }
   `

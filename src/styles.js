@@ -8,4 +8,8 @@ export const StWrapper = styled.div`
   background: ${COLOR.whiteColor};
   border-radius: 5px;
   padding: 25px;
+  text-align: center;
+`
+export const StH1 = styled.h1`
+  color: #6abbb3;
 `
