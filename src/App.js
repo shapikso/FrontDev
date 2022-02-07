@@ -25,7 +25,7 @@ const App = () => {
     const size = { width: 800, height: 600 };
 
 
-    const drawCircle = (ctx, size, ball) => {
+    const drawCircle = (ctx, size, ball, date) => {
         const {x, y, radius, color} = ball;
         ctx.save();
         ctx.beginPath();
@@ -36,7 +36,6 @@ const App = () => {
         ctx.font = `${radius}px Arial`;
         ctx.fillStyle = 'black';
         ctx.textBaseline = 'middle';
-        const date = new Date();
         ctx.fillText(date.getSeconds().toString(), x, y + radius/30);
         ctx.closePath();
         ctx.restore();
@@ -67,9 +66,10 @@ const App = () => {
     const renderFrame = () => {
         const ctx = canvasRef.current.getContext("2d");
         ctx.clearRect(0, 0, size.width, size.height);
+        const date = new Date();
         ballRef.current.forEach((ballElement => {
             updateBall(ballElement);
-            drawCircle(ctx, size, ballElement);
+            drawCircle(ctx, size, ballElement, date);
         }));
 
     };
