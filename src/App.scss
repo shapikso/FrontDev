@@ -24,3 +24,18 @@ canvas {
   gap: 30px;
   margin: 200px auto;
 }
+.buttonWrapper {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   button {
+     cursor: pointer;
+     height: 40px;
+     width: 200px;
+     background-color: white;
+     color: #0069d9;
+     border: none;
+     border-radius: 10px;
+   }
+}
