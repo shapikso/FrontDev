@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 //import reportWebVitals from './reportWebVitals';
 import {GlobalStyle} from "./GlobalStyles";
+import {NotificationContextProvider} from './NotificationContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <GlobalStyle/>
-    <App />
-  </React.StrictMode>,
+    <NotificationContextProvider>
+        <GlobalStyle/>
+        <App />
+    </NotificationContextProvider>,
   document.getElementById('root')
 );
 
