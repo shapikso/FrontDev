@@ -11,12 +11,12 @@ export const StButton = styled.button`
   border-radius: 10px;
   margin-left: 10px;
   ${({isDisabled}) => isDisabled
-      ?
-      `cursor: not-allowed;
+        ?
+        `cursor: not-allowed;
            opacity: 0.5;`
-      : `cursor: pointer;
+        : `cursor: pointer;
              opacity: 1;`};
-`
+`;
 export const StInput = styled.input`
   outline: none;
   width: 85%;
@@ -29,4 +29,4 @@ export const StInput = styled.input`
   :focus {
     border-color: ${COLOR.focusInput};
   }
-`
+`;

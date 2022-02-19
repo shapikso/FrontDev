@@ -6,7 +6,7 @@ const NotificationContextProvider = ({children}) => {
     const [state, setState] = useState ({
         type: '',
         message: '',
-    })
+    });
 
     const showNotification = (type, message) => {
         setState({type, message});
@@ -17,14 +17,14 @@ const NotificationContextProvider = ({children}) => {
         setState({
             type: '',
             message: '',
-        })
-    }
+        });
+    };
 
     return (
         <Context.Provider value={ {notification: {...state}, showNotification }}>
             {children}
         </Context.Provider>
     );
-}
+};
 
-export {NotificationContextProvider, Context as NotificationContext}
+export {NotificationContextProvider, Context as NotificationContext};

@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './ListItem'
+import ListItem from './ListItem';
 import {StTasks} from "./styled";
 
 const List = ({todos, deleteTodo, changeChecked}) => (
@@ -11,6 +11,6 @@ const List = ({todos, deleteTodo, changeChecked}) => (
             changeChecked = {changeChecked}
         />)}
     </StTasks>
-)
+);
 
 export default List;

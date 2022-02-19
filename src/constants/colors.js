@@ -4,4 +4,4 @@ export const COLOR = {
     inputBorder: '#386c68',
     listItem: '#f2f2f2',
     focusInput: '#6abbb3'
-}
+};

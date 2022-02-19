@@ -4,35 +4,35 @@ import {StButton, StInput} from "../commonStyles/commonStyles";
 
 const Form = ({addToList}) => {
 
-  const inputRef = useRef();
-  const [inputText, setInputText] = useState('');
+    const inputRef = useRef();
+    const [inputText, setInputText] = useState('');
 
-  useEffect(()=>{
-    inputRef.current.focus();
-  },[])
+    useEffect(()=>{
+        inputRef.current.focus();
+    },[]);
 
-  const handleChangeInput = (e) => setInputText(e.target.value);
+    const handleChangeInput = (e) => setInputText(e.target.value);
 
-  const handleSubmit = ()  => {
-      addToList(inputText);
-      setInputText('');
-      inputRef.current.focus();
-  }
+    const handleSubmit = ()  => {
+        addToList(inputText);
+        setInputText('');
+        inputRef.current.focus();
+    };
 
-  return (
+    return (
         <StFormWrapper>
             <StInput
                 ref={inputRef}
                 onChange={handleChangeInput}
                 placeholder="Add your new todo" value={inputText}/>
             <StButton fontSize="20px"
-                      disabled={!inputText.trim()}
-                      isDisabled={!inputText.trim()}
-                      onClick={handleSubmit}>
+                disabled={!inputText.trim()}
+                isDisabled={!inputText.trim()}
+                onClick={handleSubmit}>
                         Add
             </StButton>
         </StFormWrapper>
     );
-}
+};
 
 export default Form;
