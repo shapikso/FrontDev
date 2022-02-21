@@ -5,8 +5,8 @@ export const StButton = styled.button`
   width: ${({width}) => width ? width : '85px' };
   height: 40px;
   border: none;
-  background: ${COLOR.buttonBackGround};
-  color: ${COLOR.whiteColor};
+  background: ${({theme})=> theme.buttonColor};
+  color: ${({theme})=> theme.secondary};
   font-size: ${({fontSize}) => fontSize ? fontSize : '12px' };
   border-radius: 10px;
   margin-left: 10px;

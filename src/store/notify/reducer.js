@@ -1,7 +1,7 @@
 import {CLEAR_NOTIFICATION, SHOW_NOTIFICATION} from "./actionTypes";
 const initialState = {type: '', message: '',};
 
-const todosRedux = (state = initialState, {type, payload}) => {
+const notifyRedux = (state = initialState, {type, payload}) => {
     switch (type) {
         case SHOW_NOTIFICATION:
             return payload;
@@ -12,4 +12,4 @@ const todosRedux = (state = initialState, {type, payload}) => {
     }
 };
 
-export default todosRedux;
+export default notifyRedux;

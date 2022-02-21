@@ -16,6 +16,7 @@ export const StList = styled.div`
     border-radius: 3px;
     margin-bottom: 8px;
     padding: 0 15px;
+    color: #000;
     text-decoration-line: ${ ({done}) => done ? 'line-through' : 'none' }
 `;
 

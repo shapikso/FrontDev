@@ -3,10 +3,12 @@ import {ButtonWrapper, StList} from "./styled";
 import {StButton} from "../commonStyles/commonStyles";
 import {checkTodo, deleteTodoAction} from "../../store/todos/action";
 import {showNotification} from "../../store/notify/action";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {selectTheme} from "../../store/theme/selectors";
 
 const ListItem = ({title, checked, id, }) => {
     const dispatch = useDispatch();
+    const theme = useSelector(selectTheme);
     const changeChecked = () => {
         dispatch(checkTodo(id));
         dispatch(showNotification('success','Changed Successfully'));
@@ -20,8 +22,8 @@ const ListItem = ({title, checked, id, }) => {
         <StList done={checked}>
             <p>{title}</p>
             <ButtonWrapper>
-                <StButton width="40px" onClick={ deleteTodo }><i className="fas fa-trash"/></StButton>
-                <StButton width="40px" onClick={ changeChecked }><i className="fas fa-check"/></StButton>
+                <StButton theme={theme} width="40px" onClick={ deleteTodo }><i className="fas fa-trash"/></StButton>
+                <StButton theme={theme} width="40px" onClick={ changeChecked }><i className="fas fa-check"/></StButton>
             </ButtonWrapper>
         </StList>
     );};
