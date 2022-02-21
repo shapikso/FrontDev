@@ -1,15 +1,28 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {StFormWrapper} from "./styled";
 import {StButton, StInput} from "../commonStyles/commonStyles";
+import {useDispatch} from "react-redux";
+import {addTodo} from "../../store/todos/action";
+import {showNotification} from "../../store/notify/action";
 
-const Form = ({addToList}) => {
-
+const Form = () => {
     const inputRef = useRef();
     const [inputText, setInputText] = useState('');
 
     useEffect(()=>{
         inputRef.current.focus();
     },[]);
+
+    const dispatch = useDispatch();
+    const addToList = (task) =>{
+        const toDo = {title: task, id: Date.now(), completed: false};
+        try {
+            dispatch(addTodo(toDo));
+            dispatch(showNotification('success','Success'));
+        } catch (error) {
+            dispatch(showNotification('error','Error'));
+        }
+    };
 
     const handleChangeInput = (e) => setInputText(e.target.value);
 

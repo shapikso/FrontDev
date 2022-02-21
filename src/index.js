@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 //import reportWebVitals from './reportWebVitals';
 import {GlobalStyle} from "./GlobalStyles";
-import {NotificationContextProvider} from './NotificationContext';
+import { Provider } from 'react-redux';
+import {store} from './store/index';
 
 ReactDOM.render(
-    <NotificationContextProvider>
+    <Provider store={store}>
         <GlobalStyle/>
         <App />
-    </NotificationContextProvider>,
+    </Provider>,
     document.getElementById('root')
 );
 
