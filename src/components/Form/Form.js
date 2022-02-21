@@ -14,14 +14,10 @@ const Form = () => {
     },[]);
 
     const dispatch = useDispatch();
-    const addToList = (task) =>{
+    const addToList = (task) => {
         const toDo = {title: task, id: Date.now(), completed: false};
-        try {
-            dispatch(addTodo(toDo));
-            dispatch(showNotification('success','Success'));
-        } catch (error) {
-            dispatch(showNotification('error','Error'));
-        }
+        dispatch(addTodo(toDo));
+        dispatch(showNotification('success','Added Successfully'));
     };
 
     const handleChangeInput = (e) => setInputText(e.target.value);

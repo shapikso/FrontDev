@@ -6,30 +6,22 @@ import {showNotification} from "../../store/notify/action";
 import {useDispatch} from "react-redux";
 
 const ListItem = ({title, checked, id, }) => {
-
     const dispatch = useDispatch();
-    const changeChecked = (id) => {
+    const changeChecked = () => {
         dispatch(checkTodo(id));
-        dispatch(showNotification('success','Success'));
+        dispatch(showNotification('success','Changed Successfully'));
     };
-    const deleteTodo = (id) =>{
-        try {
-            dispatch(deleteTodoAction(id));
-            dispatch(showNotification('success','Success'));
-        } catch (error) {
-            dispatch(showNotification('error','Error'));
-            return false;
-        }
+    const deleteTodo = () =>{
+        dispatch(deleteTodoAction(id));
+        dispatch(showNotification('success','Delete Successfully'));
     };
-    const deleteTask = () => deleteTodo(id);
-    const changeTask = () => changeChecked(id);
 
     return(
         <StList done={checked}>
             <p>{title}</p>
             <ButtonWrapper>
-                <StButton width="40px" onClick={ deleteTask }><i className="fas fa-trash"></i></StButton>
-                <StButton width="40px" onClick={ changeTask }><i className="fas fa-check"></i></StButton>
+                <StButton width="40px" onClick={ deleteTodo }><i className="fas fa-trash"/></StButton>
+                <StButton width="40px" onClick={ changeChecked }><i className="fas fa-check"/></StButton>
             </ButtonWrapper>
         </StList>
     );};
