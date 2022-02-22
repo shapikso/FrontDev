@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import {COLOR} from "../../constants/colors";
+import {TTheme} from "../../store/theme/types";
 
-export const StButton = styled.button`
+type TProps = {
+  theme?: TTheme,
+  width?: string,
+  fontSize?: string,
+  isDisabled?: boolean
+};
+
+export const StButton = styled.button<TProps>`
   width: ${({width}) => width ? width : '85px' };
   height: 40px;
   border: none;

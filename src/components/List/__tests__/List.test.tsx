@@ -1,8 +1,6 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import List from "../List";
-import {Provider} from "react-redux";
-import {store} from "../../../store";
 import {mockStore, mountSmart} from "../../../helpers/testhelper";
 
 describe('List', ()=> {
@@ -11,7 +9,7 @@ describe('List', ()=> {
             {
                 title: 'random Text',
                 id: 1,
-                checked: false
+                completed: false
             },
             {
                 title: 'aaaa',
@@ -24,7 +22,7 @@ describe('List', ()=> {
         {
             title: 'random Text',
             id: 1,
-            checked: false
+            completed: false
         },
         {
             title: 'aaaa',

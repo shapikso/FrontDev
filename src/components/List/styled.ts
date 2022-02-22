@@ -5,7 +5,12 @@ export const StTasks = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const StList = styled.div`
+
+type TProps = {
+    done: boolean
+}
+
+export const StList = styled.div<TProps>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;

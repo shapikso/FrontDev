@@ -1,27 +1,35 @@
 import React, {useEffect, useRef} from 'react';
 import {StFormWrapper} from "./styled";
 import {StButton, StInput} from "../commonStyles/commonStyles";
+import {TTheme} from "../../store/theme/types";
+import {TTodos} from "../../store/todos/types";
 
-const Form = ({theme, showNotification, addTodo}) => {
-    const inputRef = useRef();
+type TProps = {
+    theme: TTheme,
+    showNotification: (type: string, message: string) => void,
+    addTodo: (todo: TTodos) => void
+}
+
+const Form = ({theme, showNotification, addTodo}: TProps) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const [inputText, setInputText] = React.useState('');
 
     useEffect(()=>{
-        inputRef.current.focus();
+        inputRef.current?.focus();
     },[]);
 
-    const addToList = (task) => {
+    const addToList = (task: string) => {
         const toDo = {title: task, id: Date.now(), completed: false};
         addTodo(toDo);
         showNotification('success','Added Successfully');
     };
 
-    const handleChangeInput = (e) => setInputText(e.target.value);
+    const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement> ) => setInputText(e.target.value);
 
     const handleSubmit = ()  => {
         addToList(inputText);
         setInputText('');
-        inputRef.current.focus();
+        inputRef.current?.focus();
     };
 
     return (

@@ -5,7 +5,7 @@ import {lightTheme} from "../../../constants/themes";
 describe('ListItem', ()=> {
     const props = {
         title: 'ToDo testing text' ,
-        checked: false,
+        completed: false,
         checkTodo: jest.fn(),
         id: 20,
         deleteTodoAction: jest.fn(),
@@ -20,7 +20,7 @@ describe('ListItem', ()=> {
 
     it('should render checked prop', () => {
         const component = mount(<ListItem {...props} />);
-        expect(component.props().checked).toEqual(props.checked);
+        expect(component.props().checked).toEqual(props.completed);
     });
 
     it('should render value', () => {

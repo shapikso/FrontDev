@@ -1,5 +1,6 @@
 import theme from '../reducer';
 import {SWITCH_LIGHT_THEME, SWITCH_DARK_THEME} from "../actionTypes";
+import {darkTheme} from "../../../constants/themes";
 
 describe('reducer', () => {
     it('should provide the initial state', () => {
@@ -12,7 +13,7 @@ describe('reducer', () => {
         });
     });
     it('should handle SWITCH_DARK_THEME action', () => {
-        expect(theme({}, {type:SWITCH_DARK_THEME})).toEqual({
+        expect(theme(darkTheme, {type:SWITCH_DARK_THEME})).toEqual({
             primary: '#000',
             secondary:'#fff',
             backgroundFirst:'#285c50',
@@ -21,7 +22,7 @@ describe('reducer', () => {
         });
     });
     it('should handle CLEAR_NOTIFICATION action', () => {
-        expect(theme({}, {type:SWITCH_LIGHT_THEME})).toEqual({
+        expect(theme(darkTheme, {type:SWITCH_LIGHT_THEME})).toEqual({
             primary: '#fff',
             secondary:'#000',
             backgroundFirst:'#68Eacc',

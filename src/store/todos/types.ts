@@ -1,1 +1,1 @@
-export type TTodos = {title: string, id: number, checked: boolean}
+export type TTodos = {title: string, id: number, completed: boolean}
