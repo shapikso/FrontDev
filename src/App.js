@@ -1,12 +1,12 @@
 import React from 'react';
-import Form from './components/Form/Form';
-import List from './components/List/List';
+import Form from './components/Form';
+import List from './components/List/indexList';
 import {StWrapper} from "./styles";
-import Notification from './components/Notification/Notification';
+import Notification from './components/Notification';
 import {selectTheme} from './store/theme/selectors';
 import {useSelector} from "react-redux";
 import {GlobalStyle} from "./GlobalStyles";
-import Theme from "./components/Theme/Theme";
+import Theme from "./components/Theme";
 
 const App = () =>{
     const theme = useSelector(selectTheme);

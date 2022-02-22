@@ -1,25 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {StFormWrapper} from "./styled";
 import {StButton, StInput} from "../commonStyles/commonStyles";
-import {useDispatch, useSelector} from "react-redux";
-import {addTodo} from "../../store/todos/action";
-import {showNotification} from "../../store/notify/action";
-import {selectTheme} from "../../store/theme/selectors";
 
-const Form = () => {
+const Form = ({theme, showNotification, addTodo}) => {
     const inputRef = useRef();
-    const [inputText, setInputText] = useState('');
-    const theme = useSelector(selectTheme);
+    const [inputText, setInputText] = React.useState('');
 
     useEffect(()=>{
         inputRef.current.focus();
     },[]);
 
-    const dispatch = useDispatch();
     const addToList = (task) => {
         const toDo = {title: task, id: Date.now(), completed: false};
-        dispatch(addTodo(toDo));
-        dispatch(showNotification('success','Added Successfully'));
+        addTodo(toDo);
+        showNotification('success','Added Successfully');
     };
 
     const handleChangeInput = (e) => setInputText(e.target.value);

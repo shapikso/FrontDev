@@ -1,18 +1,13 @@
 import React from 'react';
 import {StButton} from "../commonStyles/commonStyles";
 import {StThemeWrapper} from "../../styles";
-import {useDispatch, useSelector} from "react-redux";
-import {selectTheme} from "../../store/theme/selectors";
-import {switchToDrak, switchToLight} from "../../store/theme/action";
 
-const Theme = () => {
-    const dispatch = useDispatch();
-    const theme = useSelector(selectTheme);
+const Theme = ({theme, switchToLight, switchToDark}) => {
     const onclickHandler = () => {
         if ( theme.primary === '#000') {
-            dispatch(switchToLight());
+            switchToLight();
         } else  {
-            dispatch(switchToDrak());
+            switchToDark();
         }
     };
     return (

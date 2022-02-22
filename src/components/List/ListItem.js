@@ -1,21 +1,15 @@
 import React from 'react';
 import {ButtonWrapper, StList} from "./styled";
 import {StButton} from "../commonStyles/commonStyles";
-import {checkTodo, deleteTodoAction} from "../../store/todos/action";
-import {showNotification} from "../../store/notify/action";
-import {useDispatch, useSelector} from "react-redux";
-import {selectTheme} from "../../store/theme/selectors";
 
-const ListItem = ({title, checked, id, }) => {
-    const dispatch = useDispatch();
-    const theme = useSelector(selectTheme);
+const ListItem = ({title, checked, id, checkTodo, deleteTodoAction, showNotification, theme }) => {
     const changeChecked = () => {
-        dispatch(checkTodo(id));
-        dispatch(showNotification('success','Changed Successfully'));
+        checkTodo(id);
+        showNotification('success','Changed Successfully');
     };
     const deleteTodo = () =>{
-        dispatch(deleteTodoAction(id));
-        dispatch(showNotification('success','Delete Successfully'));
+        deleteTodoAction(id);
+        showNotification('success','Delete Successfully');
     };
 
     return(
