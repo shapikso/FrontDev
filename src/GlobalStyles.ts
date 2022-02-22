@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
+import {TTheme} from "./store/theme/types";
 
-export const GlobalStyle = createGlobalStyle`
+
+type TPropstheme = {
+    theme: TTheme
+}
+
+export const GlobalStyle = createGlobalStyle<TPropstheme>`
   *{
     margin: 0;
     padding: 0;

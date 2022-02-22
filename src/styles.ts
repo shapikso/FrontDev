@@ -17,7 +17,11 @@ export const StThemeWrapper = styled.div`
   top: 20px;
 `;
 
-export const StNotificator = styled.div`
+type TNotificator= {
+    type: string
+}
+
+export const StNotificator = styled.div<TNotificator>`
   background-color: ${({type}) => ( type === 'success' ? '#43AC6A' : '#b40b1c' ) } ;
   //border-color: #368a55;
   color: #FFFFFF;
