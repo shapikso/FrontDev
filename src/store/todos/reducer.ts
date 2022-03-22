@@ -6,12 +6,12 @@ import * as Actions from './action';
 
 type TActions = typeof Actions;
 type TTodosActions = ActionType<TActions>;
-const initialState: TTodos[] = [{title: 'random Text', id: 1, completed: false}];
+const initialState: TTodos[] = [];
 
 const todosRedux: Reducer<TTodos[], TTodosActions>  = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
-            return [...state, action.payload];
+            return [...state, ...action.payload];
         case DELETE_TODO:
             return state.filter(el => el.id !== action.payload);
         case CHECK_TODO:
