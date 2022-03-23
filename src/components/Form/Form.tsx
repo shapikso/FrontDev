@@ -6,11 +6,10 @@ import {TTodos} from "../../store/todos/types";
 
 type TProps = {
     theme: TTheme,
-    showNotification: (type: string, message: string) => void,
     addTodo: (todo: TTodos) => void
 }
 
-const Form = ({theme, showNotification, addTodo}: TProps) => {
+const Form = ({theme, addTodo}: TProps) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [inputText, setInputText] = React.useState('');
 
@@ -21,7 +20,6 @@ const Form = ({theme, showNotification, addTodo}: TProps) => {
     const addToList = (task: string) => {
         const toDo = {title: task, id: Date.now(), completed: false};
         addTodo(toDo);
-        showNotification('success','Added Successfully');
     };
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement> ) => setInputText(e.target.value);

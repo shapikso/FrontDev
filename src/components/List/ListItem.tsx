@@ -9,18 +9,15 @@ type TProps = {
     id: number,
     checkTodo: (id: number) => void,
     deleteTodoAction: (id: number) => void,
-    showNotification: (type: string, message: string) => void,
     theme: TTheme
 }
 
-const ListItem = ({title, completed, id, checkTodo, deleteTodoAction, showNotification, theme }: TProps) => {
+const ListItem = ({title, completed, id, checkTodo, deleteTodoAction, theme }: TProps) => {
     const changeChecked = () => {
         checkTodo(id);
-        showNotification('success','Changed Successfully');
     };
     const deleteTodo = () =>{
         deleteTodoAction(id);
-        showNotification('success','Delete Successfully');
     };
 
     return(
