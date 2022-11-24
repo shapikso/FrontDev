@@ -1,7 +1,7 @@
 import {all, spawn} from 'redux-saga/effects';
-import {todosSaga} from './todos/saga';
+import {ISSSaga} from './ISS/saga';
 
 export default function* rootSaga() {
-    const sagas = [todosSaga];
+    const sagas = [ISSSaga];
     yield all(sagas.map(s => spawn(s)));
 }

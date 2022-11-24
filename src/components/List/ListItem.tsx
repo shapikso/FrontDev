@@ -1,32 +1,17 @@
 import React from 'react';
-import {ButtonWrapper, StList} from "./styled";
-import {StButton} from "../commonStyles/commonStyles";
-import {TTheme} from "../../store/theme/types";
+import {STImg, StList} from './styled';
+// @ts-ignore
+import personLogo from '../../public/person.png';
 
 type TProps = {
-    title : string,
-    completed: boolean,
-    id: number,
-    checkTodo: (id: number) => void,
-    deleteTodoAction: (id: number) => void,
-    theme: TTheme
+    name: string
 }
 
-const ListItem = ({title, completed, id, checkTodo, deleteTodoAction, theme }: TProps) => {
-    const changeChecked = () => {
-        checkTodo(id);
-    };
-    const deleteTodo = () =>{
-        deleteTodoAction(id);
-    };
-
+const ListItem = ({name}: TProps) => {
     return(
-        <StList done={completed}>
-            <p>{title}</p>
-            <ButtonWrapper>
-                <StButton theme={theme} width="40px" onClick={ deleteTodo }><i className="fas fa-trash"/></StButton>
-                <StButton theme={theme} width="40px" onClick={ changeChecked }><i className="fas fa-check"/></StButton>
-            </ButtonWrapper>
+        <StList>
+            <STImg src={personLogo} />
+            <p>{name}</p>
         </StList>
     );};
 

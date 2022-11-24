@@ -1,29 +1,29 @@
-import React, {useEffect} from 'react';
-import Form from './components/Form';
-import List from './components/List/indexList';
-import {StWrapper} from "./styles";
-import Notification from './components/Notification';
-import {selectTheme} from './store/theme/selectors';
-import {useSelector, useDispatch} from "react-redux";
-import {GlobalStyle} from "./GlobalStyles";
-import Theme from "./components/Theme";
-import {loadTodo} from "./store/todos/action";
+import React, { useEffect } from 'react';
+import { StWrapper } from "./styles";
+import { useDispatch } from "react-redux";
+import { GlobalStyle } from "./GlobalStyles";
+import InfoBars from "./components/InfoBars/index";
+import { loadPeople, loadPosition } from "./store/ISS/action";
+import ISSInfo from "./components/ISSInfo/ISSInfo";
 
 const App = () =>{
-    const theme = useSelector(selectTheme);
+    const [currentDate, setCurrentDate] = React.useState(new Date());
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(loadTodo());
+        setCurrentDate(new Date());
+        dispatch(loadPosition());
+        dispatch(loadPeople());
+        setInterval(() => {
+            setCurrentDate(new Date());
+            dispatch(loadPosition());
+        }, 5000);
     },[]);
     return (
         <>
-            <GlobalStyle theme={theme}/>
-            <Notification/>
-            <Theme/>
-            <StWrapper theme={theme} >
-                <h1>Todo App</h1>
-                <Form />
-                <List/>
+            <GlobalStyle />
+            <StWrapper >
+                <InfoBars date={currentDate}/>
+                <ISSInfo/>
             </StWrapper>
         </>
     );

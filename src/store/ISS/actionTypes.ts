@@ -1,0 +1,4 @@
+export const LOAD_POSITION = 'ISS/LOAD_POSITION';
+export const ADD_POSITION = 'ISS/ADD_POSITION';
+export const LOAD_PEOPLE = 'ISS/LOAD_PEOPLE';
+export const ADD_PEOPLE = 'ISS/ADD_PEOPLE';

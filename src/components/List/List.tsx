@@ -1,14 +1,18 @@
 import React from 'react';
-import ListItem from './indexListItem';
-import { StTasks } from "./styled";
-import {TTodos} from "../../store/todos/types";
+import ListItem from './ListItem';
+import { StPeopleList } from "./styled";
 
 type TProps ={
-    todos: TTodos[]
+    people: string[]
 }
 
-const List = ({todos}:TProps) => (
-    <StTasks>{todos.map((el) => <ListItem {...el} key = {el.id}/>)}</StTasks>
+const List = ({people}:TProps) => (<>
+    <StPeopleList>{people.map((el, index) => <ListItem name={el} key = {index}/>)}</StPeopleList>
+    <div>
+        <span>Total amount: {people.length} people on ISS</span>
+    </div>
+</>
+
 );
 
 export default List;
