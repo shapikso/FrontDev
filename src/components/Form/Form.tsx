@@ -6,10 +6,10 @@ import {TTodos} from "../../store/todos/types";
 
 type TProps = {
     theme: TTheme,
-    addTodo: (todo: TTodos) => void
+    addCity: (todo: string) => void
 }
 
-const Form = ({theme, addTodo}: TProps) => {
+const Form = ({theme, addCity}: TProps) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [inputText, setInputText] = React.useState('');
 
@@ -19,13 +19,13 @@ const Form = ({theme, addTodo}: TProps) => {
 
     const addToList = (task: string) => {
         const toDo = {title: task, id: Date.now(), completed: false};
-        addTodo(toDo);
+        //addTodo(toDo);
     };
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement> ) => setInputText(e.target.value);
 
     const handleSubmit = ()  => {
-        addToList(inputText);
+        addCity(inputText);
         setInputText('');
         inputRef.current?.focus();
     };
@@ -35,7 +35,7 @@ const Form = ({theme, addTodo}: TProps) => {
             <StInput
                 ref={inputRef}
                 onChange={handleChangeInput}
-                placeholder="Add your new todo" value={inputText}/>
+                placeholder="Add your new city" value={inputText}/>
             <StButton
                 fontSize="20px"
                 theme={theme}

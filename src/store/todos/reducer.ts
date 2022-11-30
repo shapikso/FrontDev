@@ -1,24 +1,23 @@
 import {ActionType} from "typesafe-actions";
 import { Reducer } from 'redux';
-import {ADD_TODO, CHECK_TODO, DELETE_TODO} from './actionTypes';
-import {TTodos} from './types';
+import { ADD_CITY, UPDATE_CITY } from './actionTypes';
+import { TWeatherInfo } from './types';
 import * as Actions from './action';
 
 type TActions = typeof Actions;
 type TTodosActions = ActionType<TActions>;
-const initialState: TTodos[] = [];
+const initialState: TWeatherInfo[] = [];
 
-const todosRedux: Reducer<TTodos[], TTodosActions>  = (state = initialState, action) => {
+const weatherRedux: Reducer<TWeatherInfo[], TTodosActions>  = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_TODO:
+        case ADD_CITY:
             return [...state, ...action.payload];
-        case DELETE_TODO:
-            return state.filter(el => el.id !== action.payload);
-        case CHECK_TODO:
-            return state.map(el => el.id === action.payload ? {...el, completed: !el.completed} : el);
+        case UPDATE_CITY: {
+            return state.map(el => el.id === action.payload.id ? {name: 'Dnipro', id:709930, icon:'01d', temperature: 25} : el);
+        }
         default:
             return state;
     }
 };
 
-export default todosRedux;
+export default weatherRedux;

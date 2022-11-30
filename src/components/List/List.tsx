@@ -1,14 +1,14 @@
 import React from 'react';
 import ListItem from './indexListItem';
 import { StTasks } from "./styled";
-import {TTodos} from "../../store/todos/types";
+import {TTodos, TWeatherInfo} from "../../store/todos/types";
 
 type TProps ={
-    todos: TTodos[]
+    weather: TWeatherInfo[]
 }
 
-const List = ({todos}:TProps) => (
-    <StTasks>{todos.map((el) => <ListItem {...el} key = {el.id}/>)}</StTasks>
+const List = ({weather}:TProps) => (
+    <StTasks>{weather.map((el) => <ListItem {...el} key = {el.id}/>)}</StTasks>
 );
 
 export default List;

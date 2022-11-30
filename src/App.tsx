@@ -7,13 +7,13 @@ import {selectTheme} from './store/theme/selectors';
 import {useSelector, useDispatch} from "react-redux";
 import {GlobalStyle} from "./GlobalStyles";
 import Theme from "./components/Theme";
-import {loadTodo} from "./store/todos/action";
+import {loadCities } from "./store/todos/action";
 
 const App = () =>{
     const theme = useSelector(selectTheme);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(loadTodo());
+        dispatch(loadCities());
     },[]);
     return (
         <>
@@ -21,7 +21,6 @@ const App = () =>{
             <Notification/>
             <Theme/>
             <StWrapper theme={theme} >
-                <h1>Todo App</h1>
                 <Form />
                 <List/>
             </StWrapper>

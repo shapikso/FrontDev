@@ -1,4 +1,4 @@
 export const URL = {
-    baseUrl : 'https://jsonplaceholder.typicode.com/todos',
-    getUrl : '?_limit=5'
+    baseUrl : 'https://api.openweathermap.org/data/2.5/weather?appid=f1d53554aa15ea3a40648ba1d31a2e2e&units=metric&q=',
+    groupUrl : 'http://api.openweathermap.org/data/2.5/group?units=metric&appid=f1d53554aa15ea3a40648ba1d31a2e2e&id=',
 };

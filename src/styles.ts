@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StWrapper = styled.div`
   margin: 120px auto;
-  max-width: 600px;
+  max-width: 900px;
   width: 100%;
   background: ${({theme})=> theme.primary};
   color: ${({theme})=> theme.secondary};

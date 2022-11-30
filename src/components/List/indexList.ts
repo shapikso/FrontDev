@@ -2,9 +2,10 @@ import {connect} from "react-redux";
 import List from './List';
 import { selectTodos } from "../../store/todos/selectors";
 import {ApplicationState} from "../../store/types";
+import weatherRedux from "../../store/todos/reducer";
 
 const mapStateToProps = (state: ApplicationState) => ({
-    todos: selectTodos(state)
+    weather: selectTodos(state)
 });
 
 export default connect(mapStateToProps)(List);
