@@ -1,4 +1,3 @@
-export type TTodos = { title: string, id: number, completed: boolean };
 export type TWeather = {
     id: number,
     main: string,
@@ -47,4 +46,8 @@ export type TWeatherRespond = {
     id: number,
     name: string,
     cod: number
+}
+export type TWeatherReduce = {
+    weather:TWeatherInfo[],
+    singleWeather: TWeatherRespond
 }

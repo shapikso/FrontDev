@@ -1,15 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import {StFormWrapper} from "./styled";
 import {StButton, StInput} from "../commonStyles/commonStyles";
-import {TTheme} from "../../store/theme/types";
-import {TTodos} from "../../store/todos/types";
+import {useDispatch} from "react-redux";
+import {addCityToList} from "../../store/weather/thunks";
 
-type TProps = {
-    theme: TTheme,
-    addCity: (todo: string) => void
-}
-
-const Form = ({theme, addCity}: TProps) => {
+const Form = () => {
+    const dispatch = useDispatch();
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [inputText, setInputText] = React.useState('');
 
@@ -17,15 +13,10 @@ const Form = ({theme, addCity}: TProps) => {
         inputRef.current?.focus();
     },[]);
 
-    const addToList = (task: string) => {
-        const toDo = {title: task, id: Date.now(), completed: false};
-        //addTodo(toDo);
-    };
-
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement> ) => setInputText(e.target.value);
 
     const handleSubmit = ()  => {
-        addCity(inputText);
+        dispatch(addCityToList(inputText));
         setInputText('');
         inputRef.current?.focus();
     };
@@ -38,7 +29,6 @@ const Form = ({theme, addCity}: TProps) => {
                 placeholder="Add your new city" value={inputText}/>
             <StButton
                 fontSize="20px"
-                theme={theme}
                 disabled={!inputText.trim()}
                 isDisabled={!inputText.trim()}
                 onClick={handleSubmit}>

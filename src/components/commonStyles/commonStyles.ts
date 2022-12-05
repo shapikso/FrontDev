@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import {COLOR} from "../../constants/colors";
-import {TTheme} from "../../store/theme/types";
 
 type TProps = {
-  theme?: TTheme,
   width?: string,
   fontSize?: string,
   isDisabled?: boolean

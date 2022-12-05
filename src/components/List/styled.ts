@@ -12,16 +12,19 @@ export const StList = styled.div`
   box-sizing: content-box;
   position: relative;
   width: 180px;
-  height: 110px;
+  height: 130px;
   padding: 36px;
   border-radius: 6px;
   background-color: #ffffff;
   box-shadow: 0 0 15px #ddd;
+  a {
+    text-decoration: none;
+    color: ${COLOR.blackColor};
+  }
 `;
 
 export const StCountry = styled.div`
   font-size: 2em;
-  line-height: 10px;
   margin-top: 10px;
 `;
 
@@ -38,15 +41,20 @@ export const StImg = styled.img`
   font-size: 18px;
 `;
 
-export const StRefresh = styled.button`
-  position: absolute;
+export const StButton = styled.button`
   width: 20px;
   height: 20px;
   background: ${COLOR.buttonBackGround};
   color: ${COLOR.whiteColor};
   border-radius: 10px;
   border: none;
+  cursor: pointer;
+`;
+export const ButtonWrapper = styled.div`
+  position: absolute;
   right: 5px;
   top: 5px;
-  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  height: 20px;
 `;

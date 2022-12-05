@@ -1,4 +1,4 @@
-import {TWeatherInfo, TWeatherRespond} from "../store/todos/types";
+import {TWeatherInfo, TWeatherRespond} from "../store/weather/types";
 
 export const returnWeatherObj = (weather: TWeatherRespond[]) : TWeatherInfo[]=> {
     return weather.reduce((acc: TWeatherInfo[], element) => [...acc, {

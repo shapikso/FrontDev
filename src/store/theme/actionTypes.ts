@@ -1,2 +1,0 @@
-export const SWITCH_LIGHT_THEME = 'theme/SWITCH_LIGHT_THEME';
-export const SWITCH_DARK_THEME = 'theme/SWITCH_DARK_THEME';

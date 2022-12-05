@@ -1,31 +1,18 @@
 import React, {useEffect} from 'react';
-import Form from './components/Form';
-import List from './components/List/indexList';
-import {StWrapper} from "./styles";
-import Notification from './components/Notification';
-import {selectTheme} from './store/theme/selectors';
-import {useSelector, useDispatch} from "react-redux";
-import {GlobalStyle} from "./GlobalStyles";
-import Theme from "./components/Theme";
-import {loadCities } from "./store/todos/action";
+import { Routes, Route} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {loadCitiesList} from "./store/weather/thunks";
+import WeatherList from "./components/WeatherList/WeatherList";
+import SingleWeather from "./components/SingleWeather/SingleWeather";
 
-const App = () =>{
-    const theme = useSelector(selectTheme);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(loadCities());
-    },[]);
-    return (
+const App = () =>
+    (
         <>
-            <GlobalStyle theme={theme}/>
-            <Notification/>
-            <Theme/>
-            <StWrapper theme={theme} >
-                <Form />
-                <List/>
-            </StWrapper>
+            <Routes>
+                <Route path="/" element={<WeatherList/>} />
+                <Route path="/:id" element={<SingleWeather/>} />
+            </Routes>
         </>
     );
-};
 
 export default App;

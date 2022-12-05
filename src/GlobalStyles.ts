@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import {TTheme} from "./store/theme/types";
 
-
-type TPropstheme = {
-    theme: TTheme
-}
-
-export const GlobalStyle = createGlobalStyle<TPropstheme>`
+export const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
@@ -16,7 +10,7 @@ export const GlobalStyle = createGlobalStyle<TPropstheme>`
   body{
     height: 100vh;
     width:  100%;
-    background: linear-gradient(to bottom, ${({theme})=> theme.backgroundFirst} 0%, ${({theme})=> theme.backgroundSecond} 100%);
+    background: linear-gradient(to bottom, #68Eacc 0%, #497BE8 100%);
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
