@@ -4,10 +4,11 @@ import {mount} from "enzyme";
 // @ts-ignore
 import configureStore from "redux-mock-store";
 import thunk from 'redux-thunk';
+import {BrowserRouter} from "react-router-dom";
 
 
 export const mountSmart = (component: ReactComponentElement<any>, store: any) => {
-    const core = <Provider store={store}>{component}</Provider>;
+    const core = <BrowserRouter><Provider store={store}>{component}</Provider></BrowserRouter>;
     return mount(core);
 };
 

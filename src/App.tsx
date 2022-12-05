@@ -5,12 +5,10 @@ import SingleWeather from "./components/SingleWeather/SingleWeather";
 
 const App = () =>
     (
-        <>
-            <Routes>
-                <Route path="/" element={<WeatherList/>} />
-                <Route path="/:id" element={<SingleWeather/>} />
-            </Routes>
-        </>
+        <Routes>
+            <Route path="/" element={<WeatherList/>} />
+            <Route path="/:id" element={<SingleWeather/>} />
+        </Routes>
     );
 
 export default App;

@@ -47,7 +47,8 @@
     "lint-and-fix": "eslint . --ext .tsx --fix",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "test": "react-scripts test --coverage --watchAll"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

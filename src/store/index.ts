@@ -5,4 +5,4 @@ import weather from "./weather/reducer";
 
 export const rootReducer = combineReducers({weather, notification});
 // @ts-ignore
-export const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk)));
+export const store = createStore(rootReducer, applyMiddleware(thunk));

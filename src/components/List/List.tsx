@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './indexListItem';
+import ListItem from './ListItem';
 import { StTasks } from "./styled";
 import { TWeatherInfo } from "../../store/weather/types";
 
