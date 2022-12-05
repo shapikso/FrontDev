@@ -1,6 +1,7 @@
 {
   "name": "todo",
   "version": "0.1.0",
+  "homepage": "https://shapikso.github.io/FrontDev",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -43,9 +44,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll",
     "lint-and-fix": "eslint . --ext .tsx --fix",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -56,6 +58,7 @@
     "enzyme": "^3.11.0",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.28.0",
+    "gh-pages": "^4.0.0",
     "jest": "^27.5.1",
     "redux-mock-store": "^1.5.4",
     "redux-saga-test-plan": "^4.0.4",
